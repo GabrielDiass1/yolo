@@ -9,7 +9,7 @@ const FormContainer = styled.form`
   gap: 10px;
   flex-wrap: wrap;
   background-color: #fff;
-  padding: 20px;
+  padding: 40px;
   box-shadow: 0px 0px 5px #ccc;
   border-radius: 5px;
 `;
@@ -50,6 +50,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
       user.email.value = onEdit.email;
       user.fone.value = onEdit.fone;
       user.data_nascimento.value = onEdit.data_nascimento;
+      user.salario.value = onEdit.salario;
     }
   }, [onEdit]);
 
@@ -62,7 +63,8 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
       !user.nome.value ||
       !user.email.value ||
       !user.fone.value ||
-      !user.data_nascimento.value
+      !user.data_nascimento.value ||
+      !user.salario.value
     ) {
       return toast.warn("Preencha todos os campos!");
     }
@@ -74,6 +76,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
           email: user.email.value,
           fone: user.fone.value,
           data_nascimento: user.data_nascimento.value,
+          salario: user.salario.value,
         })
         .then(({ data }) => toast.success(data))
         .catch(({ data }) => toast.error(data));
@@ -84,6 +87,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
           email: user.email.value,
           fone: user.fone.value,
           data_nascimento: user.data_nascimento.value,
+          salario: user.salario.value,
         })
         .then(({ data }) => toast.success(data))
         .catch(({ data }) => toast.error(data));
@@ -93,6 +97,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
     user.email.value = "";
     user.fone.value = "";
     user.data_nascimento.value = "";
+    user.salario.value = "";
 
     setOnEdit(null);
     getUsers();
@@ -115,6 +120,10 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
       <InputArea>
         <Label>Data de Nascimento</Label>
         <Input name="data_nascimento" type="date" />
+      </InputArea>
+      <InputArea>
+        <Label>Salario</Label>
+        <Input name="salario" />
       </InputArea>
 
       <Button type="submit">SALVAR</Button>

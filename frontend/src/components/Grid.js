@@ -67,6 +67,8 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
           <Th>Nome</Th>
           <Th>Email</Th>
           <Th onlyWeb>Fone</Th>
+          <Th>Data de nascimento</Th>
+          <Th>Salario</Th>
           <Th></Th>
           <Th></Th>
         </Tr>
@@ -79,6 +81,8 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
             <Td width="20%" onlyWeb>
               {item.fone}
             </Td>
+            <Td width="30%">{item.data_nascimento} </Td>
+            <Td width="30%">{item.salario} </Td>
             <Td alignCenter width="5%">
               <FaEdit onClick={() => handleEdit(item)} />
             </Td>
